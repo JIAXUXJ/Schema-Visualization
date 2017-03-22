@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="js/home.js"></script>
+        <title>Database Schema Visualizer</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script>
+        projects_array = [];
+
+        function GetProjectsInfo() {
+            return $.ajax({
+                url: "/projects",
+                success: function(data, status){
+                },
+                dataType: 'json',
+            });
+        }
+
+        GetProjectsInfo().done(function(data) {
+            projects_array = data;
+        });
+
+        var app = angular.module("myApp", []);
+        app.controller("myCtrl", ['$scope', function($scope) {
+
+            function load_projects(_callback){
+                var temp = GetProjectsInfo();
+                _callback(temp);
+            }
+
+            function set_projects(){
+
+                load_projects(function(temp) {
+                    $scope.records = projects_array;
+                });
+            }
+
+            set_projects();
+        }]);
+
+        </script>
+
+</head>
+<body ng-app="myApp">
+    <h1>Database Schema Visualization Tool</h1>
+
+
+        <div class="wrapper">
+            <div class="mask">
+                <div class="square">
+                    <form action="db_info" method="post" autocomplete="on">
+
+                        <span id="message"> Enter database connection info (IP, port #) </span>
+
+                        <input type="text" class="text" name="proj_name" placeholder="Project Name (optional)">
+
+                        <input type="text" class="text" name="dbname" placeholder="Database Name">
+
+                        <input type="text" class="text" name="host" placeholder="Host Name">
+
+                        <input type="text" class="text" name="dbport" placeholder="port number(default3306)">
+
+                        <input type="text" class="text" name="username" placeholder="Username">
+
+                        <input type="password" class="text" name="dbpassword" placeholder="Password">
+
+                        <input type="submit" id="submit" value="Connect" />
+
+                    </form>
+
+                    <span id="message"> or </span>
+
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Select a Project</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Existing Projects</h4>
+                                </div>
+                                <div class="modal-body">
+
+                                    <form action="project_select" method="post" id="proj_form"></form>
+                                    <form action="project_delete" method="post" id="proj_del"></form>
+
+                                    <table ng-controller="myCtrl" class="table table-striped">
+                                        <thead>
+                                          <tr>
+                                            <th>Project Name</th>
+                                            <th>Database Name</th>
+                                            <th>Host</th>
+                                            <th>Port</th>
+                                            <th>Username</th>
+                                            <th></th>
+                                          </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <tr ng-repeat="x in records">
+                                            <td>{{x.proj}}</td>
+                                            <td>{{x.db}}</td>
+                                            <td>{{x.host}}</td>
+                                            <td>{{x.port}}</td>
+                                            <td>{{x.user}}</td>
+                                            <td><input type="radio" name="pnum" value="{{$index}}" form="proj_form" checked></td>
+                                            <td><button class="btn btn-danger btn-xs" name="del" value="{{$index}}" type="submit" form="proj_del"><span class="glyphicon glyphicon-trash"></button></td>
+                                        </tr>
+                                        </tbody>
+
+                                    </table>
+
+
+                                    <form action="project_rename" method="post" class="rename-div">
+                                        <input type="text" name="current_name" placeholder="choose a current project">
+                                        <input type="text" name="new_name" placeholder="enter new name"/>
+                                        <input id="rename" type="submit" value="Rename Your Project" />
+                                    </form>
+
+
+                                    <input type="submit" value="Connect" form="proj_form"/>
+                                    
+                                    
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="shadow"></div>
+        </div>
+
+</body>
+<script type="text/javascript" src="js/script.js"></script>
+
+
+
+</html>

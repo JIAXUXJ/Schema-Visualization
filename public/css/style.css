@@ -1,0 +1,190 @@
+body{
+    background: #EFEFEF; 
+    margin-left: 10em;
+    margin-right: 10em;
+}
+h1{
+  text-align: center;
+  border-bottom: 1px solid;
+    margin-top: 3% !important;
+}
+#myDiagramDiv{
+  width: 100%;
+  background-color: white; 
+  border: solid 1px black; 
+  width: 100%; 
+  height: 550px;
+}
+
+/* ********* */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+  height: 100%;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+body {
+  background: #f1eded;
+  /*background: -webkit-linear-gradient(#7477d7, #4b45b5 60%, #5757da 180%) no-repeat;
+  background: -moz-linear-gradient(#7477d7, #4b45b5 60%, #5757da 180%) no-repeat;
+  background: -o-linear-gradient(#7477d7, #4b45b5 60%, #5757da 180%) no-repeat;
+  background: linear-gradient(#7477d7, #4b45b5 60%, #5757da 180%) no-repeat;*/
+  font-family: "Open Sans", sans-serif;
+}
+
+.square {
+  border-radius: 2px;
+  width: 400px;
+  padding-top: 10px;
+  height: 1200px;
+  /*background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #cfcfcf), color-stop(100%, #838383));
+  background: -webkit-linear-gradient(top, #cfcfcf, #838383);
+  background: -moz-linear-gradient(top, #cfcfcf, #838383);
+  background: -o-linear-gradient(top, #cfcfcf, #838383);
+  background: linear-gradient(top, #cfcfcf, #838383);*/
+  background-color: #ccc;
+  /*border: 2px solid darkgrey;*/
+}
+
+.square input[type="text"] {
+  font-size: 1em;
+  border: none;
+}
+
+.square input[type="password"] {
+  font-size: 1em;
+  border: none;
+}
+
+.square input[type="submit"], .square button{
+  display: block;
+  text-decoration: none;
+  padding-top: 5px;
+  border-radius: 5px;
+  text-align: center;
+  box-sizing: border-box;
+  width: 90%;
+  height: 30px;
+  cursor: pointer;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #6ab0c2), color-stop(100%, #4f8491));
+  background: -webkit-linear-gradient(top, #6ab0c2, #4f8491);
+  background: -moz-linear-gradient(top, #6ab0c2, #4f8491);
+  background: -o-linear-gradient(top, #6ab0c2, #4f8491);
+  background: linear-gradient(top, #6ab0c2, #4f8491);
+  border: 1px solid #eeeeee;
+  -webkit-box-shadow: 0px 0px 3px #dddddd;
+  -moz-box-shadow: 0px 0px 3px #dddddd;
+  box-shadow: 0px 0px 3px #dddddd;
+  margin: 5px 20px;
+  font-size: 1em;
+  letter-spacing: 2px;
+  color: #FFF;
+  font-family: "Open Sans", sans-serif;
+  border:none;
+}
+
+.square #message {
+  color: black;
+  /*padding-left: 50px; */
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+
+.text {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  font-family: Tahoma, Geneva, sans-serif;  color: #333333;
+  width: 90%;
+  height: 40px;
+  margin: 7px 20px;
+  padding-left: 30px;
+  box-sizing: border-box;
+  border: 1px solid gray;
+}
+
+
+.wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: 400px;
+  height: auto;
+}
+
+
+.mask {
+  margin-top: 20px;
+  padding-bottom: 40px;
+  width: 400px;
+  height: 470px;
+  overflow: hidden;
+}
+
+
+.shadow {
+  display: inline;
+  z-index: -9999;
+  bottom: -50px;
+  position: absolute;
+  margin: 0 auto;
+  height: 20px;
+  width: 450px;
+  left: -25px;
+  background: -webkit-gradient(radial, 50%, 0, 50%, 100, color-stop(0%, rgba(0, 0, 0, 0.5)), color-stop(100%, rgba(0, 0, 0, 0)));
+  background: -webkit-radial-gradient(center, 250px 5px, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  background: -moz-radial-gradient(center, 250px 5px, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  background: -o-radial-gradient(center, 250px 5px, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  background: radial-gradient(center, 250px 5px, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  -webkit-animation: shadow 1s ease-in;
+}
+
+th {
+    font-weight: bold;
+}
+
+.rename-div{
+  width: 100%;
+  text-align: center;
+}
+.rename-div input{
+  width: 27%;
+  display: inline;
+  border: 1px solid !important;
+}
+#rename{
+  width: 32%;
+  display: inline;
+}
+
+

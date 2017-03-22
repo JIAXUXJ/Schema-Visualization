@@ -1,0 +1,16 @@
+{
+  "name": "BEST-M1",
+  "version": "1.0.0",
+  "description": "Milestone 1 for SENG 371 project.",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "http://boyang@jira.seng.uvic.ca:8051/scm/best/milestone-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "pug": "^2.0.0-beta11"
+  }
+}
